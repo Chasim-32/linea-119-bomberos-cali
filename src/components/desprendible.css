@@ -1,0 +1,220 @@
+/* =========================================
+   DESPRENDIBLE DE VERIFICACIÓN
+========================================= */
+
+.desprendible-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: start center;
+  padding: 24px 14px;
+  overflow-y: auto;
+  background: rgb(15 15 15 / 82%);
+  font-family: system-ui, sans-serif;
+}
+
+.desprendible-ventana {
+  width: min(100%, 640px);
+  display: grid;
+  gap: 12px;
+}
+
+.desprendible-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.desprendible-acciones button {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 4px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.desprendible-imprimir {
+  background: #d92332;
+  color: #fff;
+}
+
+.desprendible-imprimir:hover {
+  background: #b91c28;
+}
+
+.desprendible-cerrar {
+  background: #fff;
+  color: #151515;
+}
+
+.desprendible-acciones button:focus-visible {
+  outline: 3px solid #f5c518;
+  outline-offset: 2px;
+}
+
+.desprendible {
+  padding: 32px;
+  border-top: 8px solid #d92332;
+  background: #fff;
+  color: #151515;
+}
+
+.desprendible-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #151515;
+}
+
+.desprendible-marca {
+  padding: 10px 12px;
+  background: #d92332;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.desprendible-cabecera strong {
+  display: block;
+  font-size: 14px;
+  letter-spacing: .08em;
+}
+
+.desprendible-cabecera small {
+  color: #666;
+  font-size: 12px;
+}
+
+.desprendible h2 {
+  margin: 24px 0 18px;
+  font-size: 26px;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+}
+
+.desprendible-radicado {
+  display: grid;
+  gap: 4px;
+  padding: 16px;
+  border: 2px dashed #151515;
+  background: #fff8d6;
+  text-align: center;
+}
+
+.desprendible-radicado span {
+  color: #555;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.desprendible-radicado strong {
+  font-size: 26px;
+  letter-spacing: .06em;
+}
+
+.desprendible-datos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 20px;
+  margin: 20px 0;
+}
+
+.desprendible-datos div {
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.desprendible-datos dt {
+  color: #666;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.desprendible-datos dd {
+  margin: 3px 0 0;
+  font-size: 14px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.desprendible-pie,
+.desprendible-aviso {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.desprendible-aviso {
+  padding: 14px;
+  border-left: 4px solid #f5c518;
+  background: #fff8d6;
+  color: #151515;
+  font-size: 14px;
+}
+
+@media (max-width: 520px) {
+  .desprendible {
+    padding: 22px 16px;
+  }
+
+  .desprendible-datos {
+    grid-template-columns: 1fr;
+  }
+
+  .desprendible-radicado strong {
+    font-size: 20px;
+  }
+}
+
+/* IMPRESIÓN: solo se imprime el desprendible */
+
+@media print {
+  #root {
+    display: none !important;
+  }
+
+  .desprendible-overlay {
+    position: static;
+    display: block;
+    padding: 0;
+    overflow: visible;
+    background: none;
+  }
+
+  .desprendible-ventana {
+    width: 100%;
+  }
+
+  .desprendible-acciones {
+    display: none !important;
+  }
+
+  .desprendible {
+    border: 1px solid #151515;
+    border-top: 8px solid #d92332;
+    padding: 24px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    break-inside: avoid;
+  }
+
+  .desprendible-marca,
+  .desprendible-radicado {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  @page {
+    margin: 16mm;
+  }
+}
